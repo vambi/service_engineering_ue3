@@ -82,8 +82,20 @@ WSGI_APPLICATION = 'rest_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # MySQL database engine class.
+        'ENGINE': 'django.db.backends.mysql',
+        # MySQL database host ip.
+        'HOST': '35.246.143.192',
+        # port number.
+        'PORT': '3306',
+        # database name.
+        'NAME': 'django',
+        # user name.
+        'USER': 'django',
+        # password
+        'PASSWORD': 'serviceengineering',
+        # connect options
+        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",},
     }
 }
 
