@@ -18,7 +18,7 @@ import { Anmelden } from './anmelden.interface';
 export class HttpServiceService {
 
   // end-point url
-  base_url: string = 'http://127.0.0.1:8000/api/';
+  base_url: string = 'http://0.0.0.0:8000/api/';
 
   // http options used for making API calls
   private httpOptions: any;
@@ -43,7 +43,7 @@ export class HttpServiceService {
 
   // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
   public login(user) {
-    this.http.post('http://127.0.0.1:8000/api-token-auth/', JSON.stringify(user), this.httpOptions).subscribe(
+    this.http.post('http://0.0.0.0:8000/api-token-auth/', JSON.stringify(user), this.httpOptions).subscribe(
       data => {
         this.updateData(data['token']);
       },
@@ -55,7 +55,7 @@ export class HttpServiceService {
 
    // Refreshes the JWT token, to extend the time the user is logged in
   public refreshToken() {
-    this.http.post('http://127.0.0.1:8000/api-token-refresh/', JSON.stringify({token: this.token}), this.httpOptions).subscribe(
+    this.http.post('http://0.0.0.0:8000/api-token-refresh/', JSON.stringify({token: this.token}), this.httpOptions).subscribe(
       data => {
         this.updateData(data['token']);
       },
